@@ -1,4 +1,12 @@
+.App {
+  padding-top: 4rem; /* rim is unit of measurement */
+  min-height: 100vh; /* 100 percent of view height so app occupies entire page */
+}
 
+.navbar {
+  background-color: #F93318 !important;
+  /* https://css-tricks.com/when-using-important-is-the-right-choice/ */
+}
 
 /* .App {
   text-align: center;
