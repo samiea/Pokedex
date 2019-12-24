@@ -1,14 +1,17 @@
 import React from 'react';
-import logo from './logo.svg';
+import 'bootstrap/dist/css/bootstrap.min.css'; // https://getbootstrap.com/docs/4.4/getting-started/introduction/
+// import logo from './logo.svg';
 import './App.css';
+import Navbar from "./components/layout/Navbar.js"
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
+      <Navbar />
+      {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Edit <code>src/App.js</code> and save to reload (boop).
         </p>
         <a
           className="App-link"
@@ -18,7 +21,7 @@ function App() {
         >
           Learn React
         </a>
-      </header>
+      </header> */}
     </div>
   );
 }
