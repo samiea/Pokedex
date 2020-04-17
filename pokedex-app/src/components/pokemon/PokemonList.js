@@ -1,22 +1,37 @@
 import React, { Component } from 'react';
-import PokemonCard from './PokemonCard';
 
-// PokemonList will contain PokemonCards
+import PokemonCard from './PokemonCard';
+import Loading from '../layout/Loading';
+import axios from 'axios';
+
 export default class PokemonList extends Component {
+  state = {
+    url: 'https://pokeapi.co/api/v2/pokemon/',
+    pokemon: null
+  };
+
+  async componentDidMount() {
+    const res = await axios.get(this.state.url);
+    this.setState({ pokemon: res.data['results'] });
+  }
+
   render() {
     return (
-      <div className = "row">
-        <PokemonCard />
-        <PokemonCard />
-        <PokemonCard />
-        <PokemonCard />
-        <PokemonCard />
-        {/* making multiple objects here will create multiple PokemonCards; 
-            there appears to be default distance between two objects...  
-            we want to make this function so that it goes across the page, not down.
-            to do this, we define a class name and set the css rules for the class.
-            trying to understand where the "automatic" spacing is coming from for objects? */}
+      <div>
+        {this.state.pokemon ? (
+          <div className="row">
+            {this.state.pokemon.map(pokemon => (
+              <PokemonCard
+                key={pokemon.name}
+                name={pokemon.name}
+                url={pokemon.url}
+              />
+            ))}
+          </div>
+        ) : (
+          <Loading />
+        )}
       </div>
-    )
+    );
   }
 }
